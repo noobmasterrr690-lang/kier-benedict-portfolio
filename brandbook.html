@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KIER BENEDICT — 2026 Brand Identity Manual</title>
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon-kb.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css">
+  <style>
+    :root {
+      --studio-top: #b8bcc3;
+      --studio-mid: #cdd1d7;
+      --studio-bot: #dcdfe4;
+      --slab-bg: #ebedf0;
+      --pure-white: #ffffff;
+      --ink-950: #0b0d10;
+      --ink-900: #12151a;
+      --ink-700: #2d323b;
+      --ink-500: #5c6370;
+      --noir-bg: #060709;
+      --noir-surface: #101217;
+      --noir-border: rgba(255, 255, 255, 0.12);
+      --accent-emerald: #10b981;
+      --accent-lime: #84cc16;
+      --accent-orange: #f97316;
+      --accent-violet: #6366f1;
+      --font-display: 'Syne', sans-serif;
+      --font-sans: 'Plus Jakarta Sans', sans-serif;
+      --font-mono: 'Space Mono', monospace;
+      --font-serif: 'Instrument Serif', serif;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--pure-white);
+      color: var(--ink-900);
+      -webkit-font-smoothing: antialiased;
+      padding: 24px;
+    }
+
+    .brandbook-shell {
+      max-width: 1360px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    /* TOP BAR */
+    .bb-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 24px;
+      background: var(--pure-white);
+      border: 1px solid rgba(18, 21, 26, 0.08);
+      border-radius: 10px;
+    }
+
+    .bb-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--ink-950);
+    }
+
+    .bb-monogram {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: var(--ink-950);
+      color: var(--pure-white);
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 0.82rem;
+      display: grid;
+      place-items: center;
+    }
+
+    .bb-brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .bb-brand-text strong {
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      letter-spacing: 0.14em;
+    }
+
+    .bb-brand-text span {
+      font-family: var(--font-mono);
+      font-size: 0.58rem;
+      color: var(--ink-500);
+      letter-spacing: 0.1em;
+    }
+
+    .bb-nav-meta {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--ink-500);
+      letter-spacing: 0.1em;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .bb-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: #f2f4f7;
+      color: var(--ink-900);
+      font-weight: 700;
+    }
+
+    .bb-pill i {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent-emerald);
+      box-shadow: 0 0 8px var(--accent-emerald);
+    }
+
+    /* COVER HERO PLATE */
+    .bb-cover {
+      position: relative;
+      border-radius: 14px;
+      background:
+        radial-gradient(circle at 50% 42%, rgba(255, 255, 255, 0.55) 0%, transparent 62%),
+        linear-gradient(180deg, var(--studio-top) 0%, var(--studio-mid) 52%, var(--studio-bot) 100%);
+      padding: 44px 52px;
+      overflow: hidden;
+      border: 1px solid rgba(18, 21, 26, 0.08);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 460px;
+    }
+
+    .bb-cover__top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      color: rgba(18, 21, 26, 0.68);
+      position: relative;
+      z-index: 3;
+    }
+
+    .bb-cover__stage {
+      position: relative;
+      padding: 48px 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      z-index: 2;
+    }
+
+    .bb-cover__eyebrow {
+      font-family: var(--font-display);
+      font-size: 1.65rem;
+      font-weight: 800;
+      color: var(--pure-white);
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+      text-shadow: 0 6px 18px rgba(18, 21, 26, 0.12);
+    }
+
+    .bb-cover__title {
+      font-family: var(--font-display);
+      font-size: clamp(3.4rem, 7.2vw, 6.4rem);
+      font-weight: 800;
+      line-height: 0.94;
+      letter-spacing: 0.02em;
+      color: var(--pure-white);
+      text-transform: uppercase;
+      text-shadow: 0 16px 38px rgba(18, 21, 26, 0.14);
+    }
+
+    .bb-cover__orb-green {
+      position: absolute;
+      width: 170px;
+      height: 170px;
+      right: 18%;
+      top: 12%;
+      border-radius: 50%;
+      background: radial-gradient(circle at 32% 28%, #a7f3d0 0%, #34d399 42%, #059669 82%, #064e3b 100%);
+      box-shadow: 0 28px 54px rgba(5, 150, 105, 0.28);
+      z-index: 1;
+    }
+
+    .bb-cover__orb-violet {
+      position: absolute;
+      width: 125px;
+      height: 125px;
+      right: 9%;
+      bottom: 16%;
+      border-radius: 50%;
+      background:
+        repeating-radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.14) 0px, transparent 5px, rgba(0, 0, 0, 0.18) 10px),
+        radial-gradient(circle at 32% 28%, #a5b4fc 0%, #6366f1 42%, #3730a3 80%, #1e1b4b 100%);
+      box-shadow: 0 24px 44px rgba(30, 27, 75, 0.3);
+      z-index: 3;
+    }
+
+    .bb-cover__ring {
+      position: absolute;
+      width: 185px;
+      height: 185px;
+      right: 13%;
+      top: 22%;
+      border-radius: 50%;
+      border: 24px solid #d5dedb;
+      box-shadow: 0 22px 44px rgba(16, 18, 22, 0.18), inset 0 4px 10px rgba(255, 255, 255, 0.9);
+      z-index: 2;
+    }
+
+    .bb-cover__bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      padding-top: 22px;
+      border-top: 1px solid rgba(18, 21, 26, 0.12);
+      position: relative;
+      z-index: 3;
+    }
+
+    .bb-cover__lead {
+      max-width: 580px;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--ink-900);
+      font-weight: 500;
+    }
+
+    .bb-cover__specs {
+      display: flex;
+      gap: 32px;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+    }
+
+    .bb-cover__specs div strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      color: var(--ink-950);
+    }
+
+    /* SECTION SLABS */
+    .bb-slab {
+      background: var(--slab-bg);
+      border-radius: 14px;
+      padding: 40px 48px;
+      border: 1px solid rgba(18, 21, 26, 0.07);
+    }
+
+    .bb-slab--noir {
+      background: var(--noir-bg);
+      color: var(--pure-white);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .bb-sec-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      padding-bottom: 20px;
+      margin-bottom: 32px;
+      border-bottom: 1px solid rgba(18, 21, 26, 0.1);
+    }
+
+    .bb-slab--noir .bb-sec-head {
+      border-bottom-color: rgba(255, 255, 255, 0.12);
+    }
+
+    .bb-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      color: var(--ink-500);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .bb-slab--noir .bb-eyebrow {
+      color: var(--accent-emerald);
+    }
+
+    .bb-sec-title {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    .bb-sec-desc {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--ink-500);
+      max-width: 380px;
+      text-align: right;
+      line-height: 1.5;
+    }
+
+    .bb-slab--noir .bb-sec-desc {
+      color: #949ba8;
+    }
+
+    /* 01: BRAND IDENTITY & MONOGRAM SYSTEM */
+    .bb-identity-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .bb-id-card {
+      background: var(--pure-white);
+      border-radius: 10px;
+      padding: 28px;
+      border: 1px solid rgba(18, 21, 26, 0.08);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 250px;
+    }
+
+    .bb-id-card--dark {
+      background: var(--noir-surface);
+      color: var(--pure-white);
+      border-color: rgba(255, 255, 255, 0.12);
+    }
+
+    .bb-id-stage {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 0;
+    }
+
+    .bb-logo-large {
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .bb-logo-large__box {
+      width: 64px;
+      height: 64px;
+      border-radius: 14px;
+      background: var(--ink-950);
+      color: var(--pure-white);
+      font-family: var(--font-display);
+      font-size: 1.55rem;
+      font-weight: 800;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 14px 28px rgba(11, 13, 16, 0.18);
+    }
+
+    .bb-id-card--dark .bb-logo-large__box {
+      background: var(--pure-white);
+      color: var(--ink-950);
+    }
+
+    .bb-logo-large__meta strong {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      letter-spacing: 0.14em;
+    }
+
+    .bb-logo-large__meta span {
+      font-family: var(--font-mono);
+      font-size: 0.66rem;
+      color: var(--ink-500);
+      letter-spacing: 0.1em;
+    }
+
+    .bb-studio-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 18px;
+      border-radius: 6px;
+      background: #0b0d10;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      color: var(--pure-white);
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.05rem;
+      letter-spacing: 0.06em;
+    }
+
+    .bb-studio-badge em {
+      font-style: normal;
+      color: var(--accent-emerald);
+    }
+
+    .bb-id-foot {
+      padding-top: 14px;
+      border-top: 1px solid rgba(18, 21, 26, 0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-mono);
+      font-size: 0.64rem;
+    }
+
+    .bb-id-card--dark .bb-id-foot {
+      border-top-color: rgba(255, 255, 255, 0.12);
+      color: #949ba8;
+    }
+
+    /* 02: COLOR ARCHITECTURE */
+    .bb-color-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .bb-swatch-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .bb-swatch-preview {
+      height: 115px;
+      width: 100%;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      padding: 10px 14px;
+    }
+
+    .bb-swatch-tag {
+      font-family: var(--font-mono);
+      font-size: 0.58rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+      background: rgba(11, 13, 16, 0.75);
+      color: #ffffff;
+      backdrop-filter: blur(4px);
+    }
+
+    .bb-swatch-body {
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .bb-swatch-body strong {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--pure-white);
+    }
+
+    .bb-swatch-hex {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--accent-emerald);
+    }
+
+    .bb-swatch-role {
+      font-size: 0.72rem;
+      color: #949ba8;
+      margin-top: 2px;
+    }
+
+    /* 03: TYPOGRAPHY HIERARCHY */
+    .bb-type-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .bb-type-card {
+      background: var(--pure-white);
+      border: 1px solid rgba(18, 21, 26, 0.08);
+      border-radius: 10px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .bb-type-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-mono);
+      font-size: 0.64rem;
+      color: var(--ink-500);
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(18, 21, 26, 0.08);
+    }
+
+    .bb-type-sample--syne {
+      font-family: var(--font-display);
+      font-size: 2.35rem;
+      font-weight: 800;
+      line-height: 1.02;
+      color: var(--ink-950);
+    }
+
+    .bb-type-sample--serif {
+      font-family: var(--font-serif);
+      font-size: 2.65rem;
+      font-style: italic;
+      line-height: 1.05;
+      color: var(--ink-950);
+    }
+
+    .bb-type-sample--sans {
+      font-family: var(--font-sans);
+      font-size: 1.15rem;
+      font-weight: 600;
+      line-height: 1.5;
+      color: var(--ink-900);
+    }
+
+    .bb-type-sample--mono {
+      font-family: var(--font-mono);
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      line-height: 1.6;
+      color: var(--ink-900);
+    }
+
+    .bb-type-meta {
+      font-family: var(--font-mono);
+      font-size: 0.64rem;
+      color: var(--ink-500);
+    }
+
+    /* 04: VISUAL PRINCIPLES & ARCHITECTURE */
+    .bb-principles-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .bb-principle-card {
+      background: var(--pure-white);
+      border: 1px solid rgba(18, 21, 26, 0.08);
+      border-radius: 10px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .bb-principle-card__num {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--accent-emerald);
+      background: rgba(16, 185, 129, 0.1);
+      padding: 4px 10px;
+      border-radius: 4px;
+      align-self: flex-start;
+    }
+
+    .bb-principle-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 800;
+    }
+
+    .bb-principle-card p {
+      font-size: 0.84rem;
+      line-height: 1.6;
+      color: var(--ink-500);
+    }
+
+    .bb-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 24px;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--ink-500);
+      border-top: 1px solid rgba(18, 21, 26, 0.08);
+    }
+  </style>
+</head>
+<body>
+  <div class="brandbook-shell">
+
+    <!-- Top Identity Header -->
+    <header class="bb-nav">
+      <a href="index.html" class="bb-brand">
+        <span class="bb-monogram">KB</span>
+        <div class="bb-brand-text">
+          <strong>KIER BENEDICT</strong>
+          <span>BRAND IDENTITY &amp; DESIGN SYSTEM MANUAL</span>
+        </div>
+      </a>
+      <div class="bb-nav-meta">
+        <span>EDITION // 2026.V2</span>
+        <span class="bb-pill"><i></i> ARCHITECTURAL STUDIO SYSTEM</span>
+      </div>
+    </header>
+
+    <!-- Cover Plate -->
+    <section class="bb-cover">
+      <div class="bb-cover__orb-green"></div>
+      <div class="bb-cover__ring"></div>
+      <div class="bb-cover__orb-violet"></div>
+
+      <div class="bb-cover__top">
+        <span>DOCUMENT // KB-BRAND-2026</span>
+        <span>MANILA &amp; MINDANAO, PH (GMT+8)</span>
+      </div>
+
+      <div class="bb-cover__stage">
+        <div class="bb-cover__eyebrow">2026 EDITION</div>
+        <h1 class="bb-cover__title">BRAND BOOK</h1>
+      </div>
+
+      <div class="bb-cover__bottom">
+        <p class="bb-cover__lead">
+          Visual identity, color architecture, typographic hierarchy, and 3D spatial guidelines for Kier Benedict’s multidisciplinary UI/UX, brand design, and cinematography portfolio.
+        </p>
+        <div class="bb-cover__specs">
+          <div>
+            <strong>02</strong>
+            <span>ATMOSPHERES</span>
+          </div>
+          <div>
+            <strong>04</strong>
+            <span>TYPE VOICES</span>
+          </div>
+          <div>
+            <strong>4K</strong>
+            <span>UHD ASSETS</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 01 // Brand Identity & Signatures -->
+    <section class="bb-slab">
+      <div class="bb-sec-head">
+        <div>
+          <span class="bb-eyebrow">01 // CORE IDENTITY MARKS</span>
+          <h2 class="bb-sec-title">Monogram &amp; Studio Signatures</h2>
+        </div>
+        <p class="bb-sec-desc">Geometric high-contrast marks engineered for crisp legibility from 16px favicons to 4K exhibition headers.</p>
+      </div>
+
+      <div class="bb-identity-grid">
+        <div class="bb-id-card">
+          <div class="bb-id-stage">
+            <div class="bb-logo-large">
+              <span class="bb-logo-large__box">KB</span>
+              <div class="bb-logo-large__meta">
+                <strong>KIER BENEDICT</strong>
+                <span>STUDIO EDITION // 2026</span>
+              </div>
+            </div>
+          </div>
+          <div class="bb-id-foot">
+            <span>PRIMARY LOCKUP (DAYLIGHT)</span>
+            <span>#0B0D10 ON #FFFFFF</span>
+          </div>
+        </div>
+
+        <div class="bb-id-card bb-id-card--dark">
+          <div class="bb-id-stage">
+            <div class="bb-logo-large">
+              <span class="bb-logo-large__box">KB</span>
+              <div class="bb-logo-large__meta">
+                <strong>KIER BENEDICT</strong>
+                <span>NOIR EXHIBITION // 2026</span>
+              </div>
+            </div>
+          </div>
+          <div class="bb-id-foot">
+            <span>INVERTED LOCKUP (NOIR)</span>
+            <span>#FFFFFF ON #101217</span>
+          </div>
+        </div>
+
+        <div class="bb-id-card bb-id-card--dark">
+          <div class="bb-id-stage">
+            <div class="bb-studio-badge">
+              <span>CREATIVE &gt;&reg;</span>
+              <em>KB</em>
+            </div>
+          </div>
+          <div class="bb-id-foot">
+            <span>EDITORIAL SEAL STAMP</span>
+            <span>ACCENT #10B981</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 // Color Architecture -->
+    <section class="bb-slab bb-slab--noir">
+      <div class="bb-sec-head">
+        <div>
+          <span class="bb-eyebrow">02 // CHROMATIC SYSTEM</span>
+          <h2 class="bb-sec-title">Dual-Atmosphere Color Palette</h2>
+        </div>
+        <p class="bb-sec-desc">Contrasting brushed metallic studio daylight with deep chiaroscuro obsidian and tactile 3D sculpture accents.</p>
+      </div>
+
+      <div class="bb-color-grid">
+        <div class="bb-swatch-card">
+          <div class="bb-swatch-preview" style="background: linear-gradient(135deg, #b8bcc3 0%, #dcdfe4 100%);">
+            <span class="bb-swatch-tag">--studio-top / bot</span>
+          </div>
+          <div class="bb-swatch-body">
+            <strong>Brushed Studio Silver</strong>
+            <span class="bb-swatch-hex">#B8BCC3 &rarr; #DCDFE4</span>
+            <span class="bb-swatch-role">Hero stage &amp; spatial daylight canvas</span>
+          </div>
+        </div>
+
+        <div class="bb-swatch-card">
+          <div class="bb-swatch-preview" style="background: #ebedf0;">
+            <span class="bb-swatch-tag">--slab-bg</span>
+          </div>
+          <div class="bb-swatch-body">
+            <strong>Architectural Slab</strong>
+            <span class="bb-swatch-hex">#EBEDF0 &bull; RGB(235, 237, 240)</span>
+            <span class="bb-swatch-role">Framed content directory &amp; folder workspace</span>
+          </div>
+        </div>
+
+        <div class="bb-swatch-card">
+          <div class="bb-swatch-preview" style="background: #060709; border-bottom: 1px solid rgba(255,255,255,0.1);">
+            <span class="bb-swatch-tag">--noir-bg</span>
+          </div>
+          <div class="bb-swatch-body">
+            <strong>Chiaroscuro Obsidian</strong>
+            <span class="bb-swatch-hex">#060709 &bull; RGB(6, 7, 9)</span>
+            <span class="bb-swatch-role">Story overview, signature plates &amp; contact</span>
+          </div>
+        </div>
+
+        <div class="bb-swatch-card">
+          <div class="bb-swatch-preview" style="background: #101217; border-bottom: 1px solid rgba(255,255,255,0.1);">
+            <span class="bb-swatch-tag">--noir-surface</span>
+          </div>
+          <div class="bb-swatch-body">
+            <strong>Noir Card Surface</strong>
+            <span class="bb-swatch-hex">#101217 &bull; RGB(16, 18, 23)</span>
+            <span class="bb-swatch-role">Dark-mode cards, credentials &amp; telemetry</span>
+          </div>
+        </div>
+
+        <div class="bb-swatch-card">
+          <div class="bb-swatch-preview" style="background: radial-gradient(circle at 30% 30%, #6ee7b7, #10b981 60%, #065f46);">
+            <span class="bb-swatch-tag">--accent-emerald</span>
+          </div>
+          <div class="bb-swatch-body">
+            <strong>Studio Emerald</strong>
+            <span class="bb-swatch-hex">#10B981 &bull; RGB(16, 185, 129)</span>
+            <span class="bb-swatch-role">Live status indicators, 3D spheres &amp; audio EQ</span>
+          </div>
+        </div>
+
+        <div class="bb-swatch-card">
+          <div class="bb-swatch-preview" style="background: linear-gradient(135deg, #a3e635, #65a30d);">
+            <span class="bb-swatch-tag">--accent-lime</span>
+          </div>
+          <div class="bb-swatch-body">
+            <strong>Kinetic Lime</strong>
+            <span class="bb-swatch-hex">#84CC16 &bull; RGB(132, 204, 22)</span>
+            <span class="bb-swatch-role">3D clover sculpture &amp; UI/UX telemetry chips</span>
+          </div>
+        </div>
+
+        <div class="bb-swatch-card">
+          <div class="bb-swatch-preview" style="background: linear-gradient(135deg, #fb923c, #ea580c);">
+            <span class="bb-swatch-tag">--accent-orange</span>
+          </div>
+          <div class="bb-swatch-body">
+            <strong>Industrial Orange</strong>
+            <span class="bb-swatch-hex">#F97316 &bull; RGB(249, 115, 22)</span>
+            <span class="bb-swatch-role">3D tubular arc sculpture &amp; key art highlights</span>
+          </div>
+        </div>
+
+        <div class="bb-swatch-card">
+          <div class="bb-swatch-preview" style="background: radial-gradient(circle at 30% 30%, #a5b4fc, #6366f1 55%, #312e81);">
+            <span class="bb-swatch-tag">--accent-violet</span>
+          </div>
+          <div class="bb-swatch-body">
+            <strong>Cobalt Violet</strong>
+            <span class="bb-swatch-hex">#6366F1 &bull; RGB(99, 102, 241)</span>
+            <span class="bb-swatch-role">Ribbed 3D orb sculpture &amp; interface glow</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 // Typography Hierarchy -->
+    <section class="bb-slab">
+      <div class="bb-sec-head">
+        <div>
+          <span class="bb-eyebrow">03 // TYPOGRAPHIC ARCHITECTURE</span>
+          <h2 class="bb-sec-title">Four-Voice Font System</h2>
+        </div>
+        <p class="bb-sec-desc">Combining wide geometric display authority with classical editorial italics, clean UI sans, and technical monospace.</p>
+      </div>
+
+      <div class="bb-type-grid">
+        <div class="bb-type-card">
+          <div class="bb-type-head">
+            <span>01 // DISPLAY HEADLINES</span>
+            <span>SYNE &bull; EXTRABOLD 800</span>
+          </div>
+          <div class="bb-type-sample--syne">
+            2026 PORTFOLIO<br>KIER BENEDICT
+          </div>
+          <div class="bb-type-meta">Usage: Hero cover title, section headers, monogram, and numeric counters.</div>
+        </div>
+
+        <div class="bb-type-card">
+          <div class="bb-type-head">
+            <span>02 // EDITORIAL CONTRAST</span>
+            <span>INSTRUMENT SERIF &bull; ITALIC 400</span>
+          </div>
+          <div class="bb-type-sample--serif">
+            Initiate a collaboration.<br>Visual &amp; UI Architecture.
+          </div>
+          <div class="bb-type-meta">Usage: Expressive italic callouts paired alongside bold Syne display titles.</div>
+        </div>
+
+        <div class="bb-type-card">
+          <div class="bb-type-head">
+            <span>03 // INTERFACE &amp; NARRATIVE</span>
+            <span>PLUS JAKARTA SANS &bull; 400 / 600 / 700</span>
+          </div>
+          <div class="bb-type-sample--sans">
+            Multidisciplinary designer, UI/UX architect, and visual storyteller crafting bespoke web ateliers, brand manuals, and 35mm documentary cinema.
+          </div>
+          <div class="bb-type-meta">Usage: Case study descriptions, navigation links, buttons, and form controls.</div>
+        </div>
+
+        <div class="bb-type-card">
+          <div class="bb-type-head">
+            <span>04 // TECHNICAL TELEMETRY</span>
+            <span>SPACE MONO &bull; 400 / 700</span>
+          </div>
+          <div class="bb-type-sample--mono">
+            INDEX // DISCIPLINES 01–05<br>
+            FL // 26 &bull; MANILA &amp; MINDANAO (GMT+8)
+          </div>
+          <div class="bb-type-meta">Usage: Section indices, coordinate stamps, file counts, and metadata badges.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 // Spatial & UI/UX Layout System -->
+    <section class="bb-slab">
+      <div class="bb-sec-head">
+        <div>
+          <span class="bb-eyebrow">04 // SPATIAL &amp; INTERACTION RULES</span>
+          <h2 class="bb-sec-title">Layout, 3D Depth &amp; Responsive Grid</h2>
+        </div>
+        <p class="bb-sec-desc">Core UI/UX engineering principles governing both desktop 4K and mobile portrait viewports.</p>
+      </div>
+
+      <div class="bb-principles-grid">
+        <div class="bb-principle-card">
+          <span class="bb-principle-card__num">RULE 01 // DEPTH</span>
+          <h3>2-Layer Airbrush Hero Reveal</h3>
+          <p>The hero stage layers tactile 3D sculptures and the primary <code>PORTFOLIO</code> display behind Kier’s triple-pose cutout, revealing the front typography layer only under a soft-radius cursor airbrush mask.</p>
+        </div>
+
+        <div class="bb-principle-card">
+          <span class="bb-principle-card__num">RULE 02 // CURATION</span>
+          <h3>Vox Cards &amp; 3D Folders</h3>
+          <p>All 32+ works are organized into bespoke 3D Vox discipline stages (<code>01–05</code>) and 4 interactive hinged 3D folders so visitors can inspect works without endless vertical scrolling.</p>
+        </div>
+
+        <div class="bb-principle-card">
+          <span class="bb-principle-card__num">RULE 03 // MOBILE PRECISION</span>
+          <h3>Proportional 1&times;3 &amp; 2&times;2 Grids</h3>
+          <p>Mobile viewports lock horizontal overflow (<code>overflow-x: clip</code>) and proportionally scale the PC layout into readable <code>2&times;2</code> content cards, <code>1&times;3</code> signature plates, and a miniature fanned arc.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="bb-footer">
+      <span>&copy; 2026 KIER BENEDICT // BRAND IDENTITY MANUAL</span>
+      <span>HTTPS://KIER-BENEDICT-PORTFOLIO.VERCEL.APP</span>
+    </footer>
+
+  </div>
+</body>
+</html>
