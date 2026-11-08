@@ -598,6 +598,8 @@
   const heroStage = document.getElementById('hero-interactive-stage');
   const heroSpotlight = document.getElementById('hero-spotlight');
   const depthLayers = document.querySelectorAll('#hero [data-depth]');
+  const heroTypoBack = document.getElementById('hero-typo-back');
+  const heroTypoFront = document.getElementById('hero-typo-front');
   const hasFinePointer = window.matchMedia('(pointer: fine)').matches;
 
   if (heroStage && hasFinePointer) {
@@ -605,6 +607,12 @@
     let targetY = 0;
     let currentX = 0;
     let currentY = 0;
+
+    let isAirbrushHovering = false;
+    let airbrushTargetX = -999;
+    let airbrushTargetY = -999;
+    let airbrushCurrentX = -999;
+    let airbrushCurrentY = -999;
 
     heroStage.addEventListener('mousemove', (e) => {
       const rect = heroStage.getBoundingClientRect();
@@ -615,18 +623,51 @@
         heroSpotlight.style.left = `${e.clientX - rect.left}px`;
         heroSpotlight.style.top = `${e.clientY - rect.top}px`;
       }
+
+      if (heroTypoBack && heroTypoFront) {
+        const typoRect = heroTypoBack.getBoundingClientRect();
+        const isOverPortfolio =
+          e.clientX >= typoRect.left - 16 &&
+          e.clientX <= typoRect.right + 16 &&
+          e.clientY >= typoRect.top - 16 &&
+          e.clientY <= typoRect.bottom + 16;
+
+        if (isOverPortfolio) {
+          airbrushTargetX = e.clientX - typoRect.left;
+          airbrushTargetY = e.clientY - typoRect.top;
+          if (!isAirbrushHovering) {
+            airbrushCurrentX = airbrushTargetX;
+            airbrushCurrentY = airbrushTargetY;
+            isAirbrushHovering = true;
+          }
+          heroTypoFront.classList.add('is-airbrush-active');
+        } else {
+          isAirbrushHovering = false;
+          heroTypoFront.classList.remove('is-airbrush-active');
+        }
+      }
     });
 
     heroStage.addEventListener('mouseleave', () => {
       targetX = 0;
       targetY = 0;
+      isAirbrushHovering = false;
+      if (heroTypoFront) {
+        heroTypoFront.classList.remove('is-airbrush-active');
+      }
     });
 
     function animateHero3D() {
       currentX += (targetX - currentX) * 0.08;
       currentY += (targetY - currentY) * 0.08;
+      const isMobileViewport = window.innerWidth <= 820;
 
       depthLayers.forEach((layer) => {
+        if (isMobileViewport) {
+          layer.style.transform = '';
+          return;
+        }
+
         const depth = parseFloat(layer.getAttribute('data-depth') || '0.2');
         const moveX = currentX * depth * 42;
         const moveY = currentY * depth * 32;
@@ -635,10 +676,21 @@
 
         if (layer.classList.contains('hero-subject-stage')) {
           layer.style.transform = `translate3d(calc(-50% + ${moveX * 0.45}px), calc(-50% + ${moveY * 0.45}px), 0)`;
+        } else if (layer.classList.contains('hero-typography-layer--front')) {
+          layer.style.transform = `translate3d(${moveX}px, calc(-50% + ${moveY}px), 0)`;
+        } else if (layer.classList.contains('hero-typography-layer')) {
+          layer.style.transform = `translate3d(${moveX}px, ${moveY}px, 0)`;
         } else {
           layer.style.transform = `translate3d(${moveX}px, ${moveY}px, 0) rotateX(${rotX}deg) rotateY(${rotY}deg)`;
         }
       });
+
+      if (heroTypoFront && isAirbrushHovering) {
+        airbrushCurrentX += (airbrushTargetX - airbrushCurrentX) * 0.22;
+        airbrushCurrentY += (airbrushTargetY - airbrushCurrentY) * 0.22;
+        heroTypoFront.style.setProperty('--airbrush-x', `${airbrushCurrentX.toFixed(1)}px`);
+        heroTypoFront.style.setProperty('--airbrush-y', `${airbrushCurrentY.toFixed(1)}px`);
+      }
 
       requestAnimationFrame(animateHero3D);
     }

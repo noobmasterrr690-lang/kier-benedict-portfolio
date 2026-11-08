@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css">
 
   <!-- Master Stylesheet -->
-  <link rel="stylesheet" href="assets/css/styles.css?v=7">
+  <link rel="stylesheet" href="assets/css/styles.css?v=8">
 </head>
 <body>
 
@@ -157,8 +157,8 @@
             <div class="sculpture-3d sculpture-3d--concrete-cyl" data-depth="0.62"></div>
           </div>
 
-          <!-- LAYER 2 (Giant Architectural '2026 PORTFOLIO' Typography — Always Fits 100% Inside Frame) -->
-          <div class="hero-typography-layer" data-depth="0.14">
+          <!-- LAYER 2 (1st Layer of '2026 PORTFOLIO' Typography — Always Visible Behind Trio) -->
+          <div class="hero-typography-layer hero-typography-layer--back" id="hero-typo-back" data-depth="0.14">
             <div class="hero-year-wrap">
               <span class="hero-year-text">2026</span>
             </div>
@@ -209,6 +209,17 @@
             <div class="wireframe-rect wireframe-rect--tl" aria-hidden="true"></div>
             <div class="wireframe-rect wireframe-rect--center" aria-hidden="true"></div>
             <div class="wireframe-rect wireframe-rect--br" aria-hidden="true"></div>
+          </div>
+
+          <!-- LAYER 5 (2nd Layer of '2026 PORTFOLIO' Typography — In Front of Trio, Revealed ONLY on Hover with Soft Airbrush Radius) -->
+          <div class="hero-typography-layer hero-typography-layer--front" id="hero-typo-front" data-depth="0.14" aria-hidden="true">
+            <div class="hero-year-wrap">
+              <span class="hero-year-text">2026</span>
+            </div>
+
+            <div class="hero-display-title">
+              <span>P</span><span>O</span><span>R</span><span>T</span><span>F</span><span>O</span><span>L</span><span>I</span><span>O</span>
+            </div>
           </div>
 
         </div>
@@ -613,7 +624,7 @@
 
               <!-- 3. Bespoke Signature Cover Art Plates with Subtle 3D Animation -->
               <div class="noir-showcase-header">
-                <span>SELECTED SIGNATURE PLATES // CLICK OR SWIPE TO INSPECT</span>
+                <span>SELECTED SIGNATURE PLATES // CLICK ANY PLATE TO INSPECT</span>
                 <span class="noir-showcase-line"></span>
               </div>
 
@@ -1211,6 +1222,6 @@
     </div>
   </dialog>
 
-  <script src="assets/js/main.js"></script>
+  <script src="assets/js/main.js?v=8"></script>
 </body>
 </html>
