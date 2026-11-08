@@ -825,7 +825,7 @@
 
 
   /* ==========================================================================
-     7. PENTHOUSE ELEVATOR LOUNGE MUSIC ENGINE (Bossa Nova + Floor Indicator)
+     7. ATELIER AMBIENT SOUND ENGINE (Warm Felted Rhodes + Smooth Fade-In)
      ========================================================================== */
   const elevatorAudio = document.getElementById('elevator-audio');
   const elevatorToggleBtn = document.getElementById('elevator-toggle-btn');
@@ -835,7 +835,7 @@
   const elevatorFloorInd = document.getElementById('elevator-floor-indicator');
 
   let audioCtx = null;
-  function playElevatorDing() {
+  function playWarmStudioChime() {
     try {
       const Ctx = window.AudioContext || window.webkitAudioContext;
       if (!Ctx) return;
@@ -843,36 +843,48 @@
       if (audioCtx.state === 'suspended') audioCtx.resume();
 
       const now = audioCtx.currentTime;
-      // Classic brass penthouse elevator bell (F6 = 1396.9 Hz + overtone)
-      const osc1 = audioCtx.createOscillator();
-      const osc2 = audioCtx.createOscillator();
-      const gain = audioCtx.createGain();
+      // Soft, warm Ebmaj9 studio harmonic swell (G4 + Bb4 + D5, very low gain)
+      [392.0, 466.16, 587.33].forEach((freq, i) => {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, now + i * 0.04);
 
-      osc1.type = 'sine';
-      osc1.frequency.setValueAtTime(1396.91, now); // F6
-      osc2.type = 'sine';
-      osc2.frequency.setValueAtTime(2793.83, now); // F7 shimmer
+        gain.gain.setValueAtTime(0.0001, now + i * 0.04);
+        gain.gain.exponentialRampToValueAtTime(0.018, now + i * 0.04 + 0.06);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + 1.1);
 
-      gain.gain.setValueAtTime(0.0001, now);
-      gain.gain.exponentialRampToValueAtTime(0.075, now + 0.012);
-      gain.gain.exponentialRampToValueAtTime(0.0001, now + 1.15);
-
-      osc1.connect(gain);
-      osc2.connect(gain);
-      gain.connect(audioCtx.destination);
-
-      osc1.start(now);
-      osc2.start(now);
-      osc1.stop(now + 1.2);
-      osc2.stop(now + 1.2);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start(now + i * 0.04);
+        osc.stop(now + 1.15);
+      });
     } catch {
       // Ignore Web Audio errors
     }
   }
 
   if (elevatorAudio) {
-    elevatorAudio.volume = 0.34;
+    const TARGET_AMBIENT_VOL = 0.22; // Subtle, atmospheric gallery level
+    elevatorAudio.volume = 0;
+    let fadeTimer = null;
     let userManuallyPaused = localStorage.getItem('kb_elevator_muted') === '1';
+
+    function fadeVolumeIn() {
+      if (fadeTimer) clearInterval(fadeTimer);
+      elevatorAudio.volume = 0.02;
+      fadeTimer = setInterval(() => {
+        if (elevatorAudio.paused) {
+          clearInterval(fadeTimer);
+          return;
+        }
+        const next = Math.min(TARGET_AMBIENT_VOL, elevatorAudio.volume + 0.012);
+        elevatorAudio.volume = next;
+        if (next >= TARGET_AMBIENT_VOL) {
+          clearInterval(fadeTimer);
+        }
+      }, 65);
+    }
 
     function syncElevatorUI(isPlaying) {
       if (elevatorToggleBtn) {
@@ -887,7 +899,7 @@
         elevatorStateIcon.className = isPlaying ? 'ri-volume-up-line' : 'ri-volume-mute-line';
       }
       if (elevatorStatusLbl) {
-        elevatorStatusLbl.textContent = isPlaying ? 'LOUNGE ON AIR' : 'ELEVATOR FM';
+        elevatorStatusLbl.textContent = isPlaying ? 'AMBIENT ON AIR' : 'STUDIO SOUND';
       }
     }
 
@@ -896,9 +908,10 @@
       if (elevatorAudio.paused) {
         userManuallyPaused = false;
         localStorage.setItem('kb_elevator_muted', '0');
-        playElevatorDing();
+        playWarmStudioChime();
         try {
           await elevatorAudio.play();
+          fadeVolumeIn();
           syncElevatorUI(true);
         } catch {
           syncElevatorUI(false);
@@ -906,6 +919,7 @@
       } else {
         userManuallyPaused = true;
         localStorage.setItem('kb_elevator_muted', '1');
+        if (fadeTimer) clearInterval(fadeTimer);
         elevatorAudio.pause();
         syncElevatorUI(false);
       }
@@ -925,6 +939,7 @@
     function tryAutoStart() {
       if (userManuallyPaused || !elevatorAudio.paused) return;
       elevatorAudio.play().then(() => {
+        fadeVolumeIn();
         syncElevatorUI(true);
         removeUnlockListeners();
       }).catch(() => {
