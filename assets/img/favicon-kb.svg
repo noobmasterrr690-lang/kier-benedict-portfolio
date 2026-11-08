@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <rect width="64" height="64" rx="14" fill="#0c0d10"/>
+  <rect x="3" y="3" width="58" height="58" rx="11" stroke="rgba(255,255,255,0.16)" stroke-width="1.5"/>
+  <!-- Architectural KB Monogram -->
+  <path d="M16 17V47M16 32L30 17M21.5 26.5L31 47" stroke="#ffffff" stroke-width="4.2" stroke-linecap="square"/>
+  <path d="M37 17H45.5C49.09 17 51.5 19.2 51.5 22.8C51.5 25.6 49.8 27.6 47.2 28.3C50.4 29 52.5 31.3 52.5 34.8C52.5 39 49.5 41.5 45 41.5H37V17Z" stroke="#ffffff" stroke-width="3.8"/>
+  <line x1="37" y1="28.5" x2="46.5" y2="28.5" stroke="#ffffff" stroke-width="3.5"/>
+  <circle cx="48.5" cy="46.5" r="2.5" fill="#4ade80"/>
+</svg>
