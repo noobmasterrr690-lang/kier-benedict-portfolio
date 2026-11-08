@@ -823,4 +823,156 @@
     });
   }
 
+
+  /* ==========================================================================
+     7. PENTHOUSE ELEVATOR LOUNGE MUSIC ENGINE (Bossa Nova + Floor Indicator)
+     ========================================================================== */
+  const elevatorAudio = document.getElementById('elevator-audio');
+  const elevatorToggleBtn = document.getElementById('elevator-toggle-btn');
+  const navElevatorBtn = document.getElementById('nav-elevator-btn');
+  const elevatorStateIcon = document.getElementById('elevator-state-icon');
+  const elevatorStatusLbl = document.getElementById('elevator-status-lbl');
+  const elevatorFloorInd = document.getElementById('elevator-floor-indicator');
+
+  let audioCtx = null;
+  function playElevatorDing() {
+    try {
+      const Ctx = window.AudioContext || window.webkitAudioContext;
+      if (!Ctx) return;
+      if (!audioCtx) audioCtx = new Ctx();
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+
+      const now = audioCtx.currentTime;
+      // Classic brass penthouse elevator bell (F6 = 1396.9 Hz + overtone)
+      const osc1 = audioCtx.createOscillator();
+      const osc2 = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+
+      osc1.type = 'sine';
+      osc1.frequency.setValueAtTime(1396.91, now); // F6
+      osc2.type = 'sine';
+      osc2.frequency.setValueAtTime(2793.83, now); // F7 shimmer
+
+      gain.gain.setValueAtTime(0.0001, now);
+      gain.gain.exponentialRampToValueAtTime(0.075, now + 0.012);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + 1.15);
+
+      osc1.connect(gain);
+      osc2.connect(gain);
+      gain.connect(audioCtx.destination);
+
+      osc1.start(now);
+      osc2.start(now);
+      osc1.stop(now + 1.2);
+      osc2.stop(now + 1.2);
+    } catch {
+      // Ignore Web Audio errors
+    }
+  }
+
+  if (elevatorAudio) {
+    elevatorAudio.volume = 0.34;
+    let userManuallyPaused = localStorage.getItem('kb_elevator_muted') === '1';
+
+    function syncElevatorUI(isPlaying) {
+      if (elevatorToggleBtn) {
+        elevatorToggleBtn.classList.toggle('is-playing', isPlaying);
+        elevatorToggleBtn.setAttribute('aria-pressed', isPlaying ? 'true' : 'false');
+      }
+      if (navElevatorBtn) {
+        navElevatorBtn.classList.toggle('is-playing', isPlaying);
+        navElevatorBtn.setAttribute('aria-pressed', isPlaying ? 'true' : 'false');
+      }
+      if (elevatorStateIcon) {
+        elevatorStateIcon.className = isPlaying ? 'ri-volume-up-line' : 'ri-volume-mute-line';
+      }
+      if (elevatorStatusLbl) {
+        elevatorStatusLbl.textContent = isPlaying ? 'LOUNGE ON AIR' : 'ELEVATOR FM';
+      }
+    }
+
+    async function toggleElevatorMusic(e) {
+      if (e) e.stopPropagation();
+      if (elevatorAudio.paused) {
+        userManuallyPaused = false;
+        localStorage.setItem('kb_elevator_muted', '0');
+        playElevatorDing();
+        try {
+          await elevatorAudio.play();
+          syncElevatorUI(true);
+        } catch {
+          syncElevatorUI(false);
+        }
+      } else {
+        userManuallyPaused = true;
+        localStorage.setItem('kb_elevator_muted', '1');
+        elevatorAudio.pause();
+        syncElevatorUI(false);
+      }
+    }
+
+    if (elevatorToggleBtn) {
+      elevatorToggleBtn.addEventListener('click', toggleElevatorMusic);
+    }
+    if (navElevatorBtn) {
+      navElevatorBtn.addEventListener('click', toggleElevatorMusic);
+    }
+
+    elevatorAudio.addEventListener('play', () => syncElevatorUI(true));
+    elevatorAudio.addEventListener('pause', () => syncElevatorUI(false));
+
+    // Attempt immediate playback or start seamlessly on first user interaction
+    function tryAutoStart() {
+      if (userManuallyPaused || !elevatorAudio.paused) return;
+      elevatorAudio.play().then(() => {
+        syncElevatorUI(true);
+        removeUnlockListeners();
+      }).catch(() => {
+        // Wait for first interaction
+      });
+    }
+
+    function removeUnlockListeners() {
+      window.removeEventListener('pointerdown', tryAutoStart);
+      window.removeEventListener('keydown', tryAutoStart);
+    }
+
+    if (!userManuallyPaused) {
+      tryAutoStart();
+      window.addEventListener('pointerdown', tryAutoStart, { passive: true });
+      window.addEventListener('keydown', tryAutoStart, { passive: true });
+    } else {
+      syncElevatorUI(false);
+    }
+  }
+
+  // Live Elevator Floor Indicator on Scroll (FL // 26 -> FL // 01..05)
+  if (elevatorFloorInd) {
+    const floorMap = [
+      { id: 'hero', code: 'FL // 26' },
+      { id: 'content-index', code: 'FL // 01' },
+      { id: 'story', code: 'FL // 02' },
+      { id: 'folders-archive', code: 'FL // 03' },
+      { id: 'capabilities', code: 'FL // 04' },
+      { id: 'contact', code: 'FL // 05' }
+    ];
+
+    function updateElevatorFloor() {
+      const probeY = window.scrollY + window.innerHeight * 0.38;
+      let activeFloor = 'FL // 26';
+      for (const item of floorMap) {
+        const el = document.getElementById(item.id);
+        if (el && probeY >= el.offsetTop) {
+          activeFloor = item.code;
+        }
+      }
+      if (elevatorFloorInd.textContent !== activeFloor) {
+        elevatorFloorInd.textContent = activeFloor;
+      }
+    }
+
+    window.addEventListener('scroll', updateElevatorFloor, { passive: true });
+    updateElevatorFloor();
+  }
+
 })();
