@@ -3779,16 +3779,23 @@ dialog {
   }
 
   /* ========================================================================
-     MOBILE NOIR STORY SECTION (Unobstructed Portrait + Organized Story)
+     MOBILE NOIR STORY SECTION (Unobstructed Centered Portrait + Organized Story)
      ======================================================================== */
   .noir-story-section {
-    padding: 3.5rem 1.25rem;
+    padding: 3.25rem 1.15rem;
+    overflow-x: hidden;
+  }
+
+  .noir-story-section__canvas {
+    width: 100%;
+    max-width: 100%;
   }
 
   .noir-meta-header {
     grid-template-columns: 1fr 1.2fr 0.8fr;
     gap: 0.75rem;
     padding-bottom: 1.35rem;
+    width: 100%;
   }
 
   .noir-micro {
@@ -3801,23 +3808,57 @@ dialog {
 
   .noir-main-stage {
     gap: 2.25rem;
-    padding-top: 1.75rem;
+    padding-top: 1.5rem;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
   }
 
   .noir-split-stage {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.85rem;
+    width: 100%;
+    max-width: 100%;
+    justify-items: center;
+  }
+
+  .noir-editorial-column {
+    min-width: 0;
+    width: 100%;
+    max-width: 100%;
   }
 
   .noir-portrait-popout {
-    min-height: 460px;
-    max-width: 440px;
+    min-height: 400px;
+    max-width: 310px;
     width: 100%;
     margin: 0 auto;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+  }
+
+  .noir-rim-glow {
+    width: 260px;
+    height: 260px;
+    left: 50%;
+    top: 8%;
+    transform: translateX(-50%);
+  }
+
+  .noir-portrait-figure {
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
   }
 
   .noir-portrait-uhd {
-    height: clamp(440px, 58vh, 520px);
+    height: clamp(380px, 52vh, 450px);
+    width: auto;
+    max-width: 100%;
+    margin: 0 auto;
+    display: block;
   }
 
   .noir-display-main {
@@ -3836,13 +3877,14 @@ dialog {
     display: flex;
     flex-direction: row;
     gap: 0.85rem;
+    width: 100%;
+    max-width: 100%;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
-    padding: 0.35rem 0.35rem 0.85rem;
-    margin: 0 -0.5rem;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+    padding: 0.35rem 0.15rem 0.85rem;
+    margin: 0;
+    box-sizing: border-box;
   }
 
   .noir-showcase-trio::-webkit-scrollbar,
@@ -3876,15 +3918,15 @@ dialog {
     display: flex;
     flex-direction: row;
     gap: 0.85rem;
+    width: 100%;
+    max-width: 100%;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
-    padding: 0.35rem 0.35rem 0.85rem;
-    margin: 0 -0.5rem;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+    padding: 1.5rem 0.15rem 0.85rem;
+    margin: 0;
     border-top: 1px solid rgba(255, 255, 255, 0.12);
-    padding-top: 1.5rem;
+    box-sizing: border-box;
   }
 
   .credential-box {
