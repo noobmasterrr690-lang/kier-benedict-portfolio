@@ -232,15 +232,48 @@
       linkLabel: 'Open Graphic Gallery'
     },
     {
+      id: 'ui-1',
+      category: 'design',
+      badge: '02 // UI & UX DESIGN',
+      tag: 'Interactive Web Atelier • 4K UHD',
+      title: 'Solflora — Haute Atelier Botanique (Paris)',
+      desc: 'Bespoke interactive Parisian floral atelier web experience featuring custom bouquet composition, editorial serif typography, and reactive light and pollen physics.',
+      img: 'assets/img/ui-solflora-4k.jpg',
+      link: 'gallery-graphics.html',
+      linkLabel: 'Open UI/UX & Brand Gallery'
+    },
+    {
+      id: 'ui-2',
+      category: 'design',
+      badge: '02 // UI & UX DESIGN',
+      tag: 'Native Desktop Application • 4K UHD',
+      title: 'Sift — Precision File Organizer',
+      desc: 'Minimalist dark-mode Windows native desktop utility engineered for 100% local, private, high-speed Downloads and Desktop file indexing and organization.',
+      img: 'assets/img/ui-sift-app-4k.jpg',
+      link: 'gallery-graphics.html',
+      linkLabel: 'Open UI/UX & Brand Gallery'
+    },
+    {
+      id: 'ui-3',
+      category: 'design',
+      badge: '02 // UI & UX DESIGN',
+      tag: 'Interactive Web OS • 4K UHD',
+      title: 'Interactive Creative OS & Companion UI',
+      desc: 'Game-inspired dark-mode web architecture combining tactile Bento telemetry, holographic companion state synchronization, and custom HUD navigation.',
+      img: 'assets/img/ui-creative-os-4k.jpg',
+      link: 'gallery-graphics.html',
+      linkLabel: 'Open UI/UX & Brand Gallery'
+    },
+    {
       id: 'design-8',
       category: 'design',
       badge: '02 // UI & UX DESIGN',
-      tag: 'Fintech Web App • Design System',
-      title: 'PESO — Student Finance UI System',
-      desc: 'High-contrast dark-mode SaaS landing page and web application design for PESO, an intuitive student personal finance tracker with real-time budget telemetry.',
-      img: 'assets/img/peso-ui-design.png',
+      tag: 'Financial Dashboard & Allowance Tracker • 4K UHD',
+      title: 'Daily Allowance & Expense Dashboard UI',
+      desc: 'Clean utility web application dashboard featuring real-time daily allowance guidance, quick-fill expense logging, category budget progress bars, and SQLite state management.',
+      img: 'assets/img/ui-peso-dashboard-4k.jpg',
       link: 'gallery-graphics.html',
-      linkLabel: 'Open Graphic Gallery'
+      linkLabel: 'Open UI/UX & Brand Gallery'
     },
     {
       id: 'design-9',
